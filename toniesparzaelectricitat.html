@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toni Esparza Electricitat - Electricista Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a3d7c;
+            --secondary: #ff9900;
+            --accent: #2ecc71;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid black;
+            box-sizing: border-box;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), #ffad33);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 61, 124, 0.8), rgba(26, 26, 46, 0.8)), 
+                        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Secciones */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        /* Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Instalaciones Eléctricas Específicas */
+        .installations {
+            background-color: var(--light);
+        }
+        
+        .installation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .installation-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .installation-item i {
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+        
+        /* Por qué elegirnos */
+        .why-us {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+        }
+        
+        .why-us .section-title {
+            color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        /* Testimonios */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .testimonial-text:before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--secondary);
+            position: absolute;
+            left: -10px;
+            top: -20px;
+            opacity: 0.3;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        /* Formulario de contacto */
+        .contact-form {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(26, 61, 124, 0.2);
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--secondary);
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-section i {
+            margin-right: 10px;
+            color: var(--secondary);
+            width: 20px;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header con tu logo real -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="logo-toni-Cercle2.png" 
+                     alt="Toni Esparza Electricitat" 
+                     class="logo-img">
+                <div class="logo-text">Toni Esparza Electricitat</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#instalaciones">Instalaciones</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="#contacto" class="btn">Solicitar Presupuesto</a>
+        </div>
+    </header>
+
+    <!-- Resto del código se mantiene igual -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1>Electricista Profesional en Valencia</h1>
+            <p>Servicios de electricidad para hogares, negocios e industrias. Instalaciones, reparaciones y mantenimiento eléctrico.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+                <a href="#contacto" class="btn">Contactar Ahora</a>
+                <a href="#servicios" class="btn btn-secondary">Ver Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Principales -->
+    <section id="servicios">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Instalaciones Eléctricas</h3>
+                    <p>Instalaciones completas para viviendas, locales comerciales y naves industriales. Cumplimiento de normativas y máxima seguridad.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Reparaciones y Averías</h3>
+                    <p>Solucionamos cualquier problema eléctrico de forma rápida y eficiente. Servicio de urgencias 24 horas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <h3>Energías Renovables</h3>
+                    <p>Instalación de placas solares, puntos de carga para vehículos eléctricos y sistemas de eficiencia energética.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Iluminación y Domótica</h3>
+                    <p>Diseño e instalación de sistemas de iluminación eficiente y soluciones de domótica para tu hogar o negocio.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Certificados y Legalizaciones</h3>
+                    <p>Realizamos certificados de instalación eléctrica, boletines y legalizaciones para tu vivienda o negocio.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Mantenimiento Preventivo</h3>
+                    <p>Programas de mantenimiento para empresas y comunidades de propietarios. Evita problemas antes de que ocurran.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instalaciones Específicas -->
+    <section id="instalaciones" class="installations">
+        <div class="container">
+            <h2 class="section-title">Instalaciones Eléctricas Específicas</h2>
+            <div class="installation-grid">
+                <div class="installation-item">
+                    <i class="fas fa-home"></i>
+                    <span>Cuadros eléctricos y protecciones</span>
+                </div>
+                <div class="installation-item">
+                    <i class="fas fa-plug"></i>
+                    <span>Tomas de corriente y puntos de luz</span>
+                </div>
+                <div class="installation-item">
+                    <i class="fas fa-tv"></i>
+                    <span>Instalaciones de antena y telecomunicaciones</span>
+                </div>
+                <div class="installation-item">
+                    <i class="fas fa-fire-extinguisher"></i>
+                    <span>Sistemas de detección de incendios</span>
+                </div>
+                <div class="installation-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Sistemas de alarma y seguridad</span>
+                </div>
+                <div class="installation-item">
+                    <i class="fas fa-car-battery"></i>
+                    <span>Puntos de carga para vehículos eléctricos</span>
+                </div>
+                <div class="installation-item">
+                    <i class="fas fa-industry"></i>
+                    <span>Instalaciones trifásicas para negocios</span>
+                </div>
+                <div class="installation-item">
+                    <i class="fas fa-water"></i>
+                    <span>Grupos de presión y automatismos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por qué elegirnos -->
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title">¿Por Qué Elegirnos?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Profesionalidad</h3>
+                    <p>Más de 10 años de experiencia en el sector eléctrico</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Rapidez</h3>
+                    <p>Servicio rápido y eficiente cuando más lo necesitas</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-euro-sign"></i>
+                    </div>
+                    <h3>Precios Competitivos</h3>
+                    <p>Presupuestos sin compromiso y precios transparentes</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Garantía</h3>
+                    <p>Todos nuestros trabajos cuentan con garantía</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Opiniones de Clientes</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Gran profesional, solucionó un problema eléctrico en mi negocio de forma rápida y con un precio justo. Muy recomendable.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <strong>María González</strong>
+                            <div>Restaurante El Rincón</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Hicieron la instalación eléctrica completa de mi nueva vivienda. Todo perfecto y cumpliendo los plazos. Muy satisfecho.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <strong>Javier Martínez</strong>
+                            <div>Cliente particular</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Instalaron placas solares en mi comunidad de vecinos. Excelente trabajo y asesoramiento profesional.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <strong>Ana López</strong>
+                            <div>Presidenta comunidad</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Contacto -->
+    <section id="contacto">
+        <div class="container">
+            <h2 class="section-title">Solicita Presupuesto Sin Compromiso</h2>
+            <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Tipo de servicio</label>
+                    <select id="service" required>
+                        <option value="">Selecciona un servicio</option>
+                        <option value="instalacion">Instalación eléctrica</option>
+                        <option value="reparacion">Reparación o avería</option>
+                        <option value="mantenimiento">Mantenimiento</option>
+                        <option value="certificado">Certificado o legalización</option>
+                        <option value="solar">Energías renovables</option>
+                        <option value="otro">Otro servicio</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Describe tu necesidad</label>
+                    <textarea id="message" placeholder="Describe el trabajo que necesitas..." required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Solicitar Presupuesto</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> +34 123 456 789</p>
+                    <p><i class="fas fa-envelope"></i> info@toniesparzaelectricitat.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Valencia y alrededores</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/toniesparzaelectricitat" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Horario</h3>
+                    <p><i class="fas fa-clock"></i> Lunes a Viernes: 8:00 - 18:00</p>
+                    <p><i class="fas fa-clock"></i> Sábados: 9:00 - 14:00</p>
+                    <p><i class="fas fa-clock"></i> Urgencias 24h</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Zonas de Actuación</h3>
+                    <p>Valencia capital</p>
+                    <p>Area metropolitana</p>
+                    <p>Poblaciones cercanas</p>
+                    <p>Servicio provincial</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Toni Esparza Electricitat - Electricista autorizado - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Procesar formulario de contacto
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Aquí normalmente enviarías los datos a un servidor
+            alert(`¡Gracias ${name}! Hemos recibido tu solicitud de presupuesto para ${service}. Te contactaremos pronto al ${phone} o ${email} para concretar los detalles.`);
+            
+            // Limpiar formulario
+            document.getElementById('contact-form').reset();
+        });
+
+        // Smooth scrolling para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
